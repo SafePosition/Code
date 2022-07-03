@@ -1,0 +1,69 @@
+<changelist name="在Update之前未提交更改_at_2022_7_3_13_29_[默认的]" date="1656826170016" recycled="false" toDelete="true">
+  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/在Update之前未提交更改_at_2022_7_3_13_29_[默认的]/shelved.patch" />
+  <option name="DESCRIPTION" value="在Update之前未提交更改 at 2022/7/3 13:29 [默认的]" />
+  <binary>
+    <option name="BEFORE_PATH" value="dsc945skllxs.pub" />
+    <option name="AFTER_PATH" />
+    <option name="SHELVED_PATH" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="dsc945skllxs" />
+    <option name="AFTER_PATH" />
+    <option name="SHELVED_PATH" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="crm/target/classes/com/bjpowernode/crm/commons/utils/HSSFUtils.class" />
+    <option name="AFTER_PATH" value="crm/target/classes/com/bjpowernode/crm/commons/utils/HSSFUtils.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在Update之前未提交更改_at_2022_7_3_13_29_[默认的]/HSSFUtils.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="crm/target/crm.war" />
+    <option name="AFTER_PATH" value="crm/target/crm.war" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在Update之前未提交更改_at_2022_7_3_13_29_[默认的]/crm.war" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="crm/target/crm/WEB-INF/classes/com/bjpowernode/crm/workbench/service/impl/AvtivityServiceImpl.class" />
+    <option name="AFTER_PATH" value="crm/target/crm/WEB-INF/classes/com/bjpowernode/crm/workbench/service/impl/AvtivityServiceImpl.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在Update之前未提交更改_at_2022_7_3_13_29_[默认的]/AvtivityServiceImpl.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="crm/target/crm/WEB-INF/classes/com/bjpowernode/crm/commons/utils/HSSFUtils.class" />
+    <option name="AFTER_PATH" value="crm/target/crm/WEB-INF/classes/com/bjpowernode/crm/commons/utils/HSSFUtils.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在Update之前未提交更改_at_2022_7_3_13_29_[默认的]/HSSFUtils1.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="crm/target/classes/com/bjpowernode/crm/workbench/service/ActivityService.class" />
+    <option name="AFTER_PATH" value="crm/target/classes/com/bjpowernode/crm/workbench/service/ActivityService.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在Update之前未提交更改_at_2022_7_3_13_29_[默认的]/ActivityService.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="crm/target/classes/com/bjpowernode/crm/workbench/mapper/ActivityMapper.class" />
+    <option name="AFTER_PATH" value="crm/target/classes/com/bjpowernode/crm/workbench/mapper/ActivityMapper.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在Update之前未提交更改_at_2022_7_3_13_29_[默认的]/ActivityMapper.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="crm/target/classes/com/bjpowernode/crm/workbench/service/impl/AvtivityServiceImpl.class" />
+    <option name="AFTER_PATH" value="crm/target/classes/com/bjpowernode/crm/workbench/service/impl/AvtivityServiceImpl.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在Update之前未提交更改_at_2022_7_3_13_29_[默认的]/AvtivityServiceImpl1.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="crm/target/classes/com/bjpowernode/crm/workbench/web/controller/ActivateController.class" />
+    <option name="AFTER_PATH" value="crm/target/classes/com/bjpowernode/crm/workbench/web/controller/ActivateController.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在Update之前未提交更改_at_2022_7_3_13_29_[默认的]/ActivateController.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="crm/target/crm/WEB-INF/classes/com/bjpowernode/crm/workbench/service/ActivityService.class" />
+    <option name="AFTER_PATH" value="crm/target/crm/WEB-INF/classes/com/bjpowernode/crm/workbench/service/ActivityService.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在Update之前未提交更改_at_2022_7_3_13_29_[默认的]/ActivityService1.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="crm/target/crm/WEB-INF/classes/com/bjpowernode/crm/workbench/mapper/ActivityMapper.class" />
+    <option name="AFTER_PATH" value="crm/target/crm/WEB-INF/classes/com/bjpowernode/crm/workbench/mapper/ActivityMapper.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在Update之前未提交更改_at_2022_7_3_13_29_[默认的]/ActivityMapper1.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="crm/target/crm/WEB-INF/classes/com/bjpowernode/crm/workbench/web/controller/ActivateController.class" />
+    <option name="AFTER_PATH" value="crm/target/crm/WEB-INF/classes/com/bjpowernode/crm/workbench/web/controller/ActivateController.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在Update之前未提交更改_at_2022_7_3_13_29_[默认的]/ActivateController1.class" />
+  </binary>
+</changelist>
