@@ -329,21 +329,32 @@ public class ActivateController {
                 activity.setOwner(user.getId());
                 activity.setCreateTime(DateUtils.formateDateTime(new Date()));
                 activity.setCreateBy(user.getId());
-                for(int j = 0; j < row.getLastCellNum(); j++) { // row.getLastCellNum():最后一列的下标+1
-                    // 根据row获取HSSFCell对象，封装了一列的所有信息
-                    cell=row.getCell(j); // 列的下标，下标从0开始，依次增加
-                    // 获取列中的数据
+//                for(int j = 0; j < row.getLastCellNum(); j++) { // row.getLastCellNum():最后一列的下标+1
+//                    // 根据row获取HSSFCell对象，封装了一列的所有信息
+//                    cell=row.getCell(j); // 列的下标，下标从0开始，依次增加
+//                    // 获取列中的数据
+//                    String cellValue = HSSFUtils.getCellValueForStr(cell);
+//                    if(j == 0) {
+//                        activity.setName(cellValue);
+//                    } else if(j == 1){
+//                        activity.setStartDate(cellValue);
+//                    } else if(j == 2){
+//                        activity.setEndDate(cellValue);
+//                    } else if(j == 3){
+//                        activity.setCost(cellValue);
+//                    } else if(j == 4){
+//                        activity.setDescription(cellValue);
+//                    }
+//                }
+                for (int j = 0; j <row.getLastCellNum() ; j++) {
+                    cell = row.getCell(j);
                     String cellValue = HSSFUtils.getCellValueForStr(cell);
-                    if(j == 0) {
-                        activity.setName(cellValue);
-                    } else if(j == 1){
-                        activity.setStartDate(cellValue);
-                    } else if(j == 2){
-                        activity.setEndDate(cellValue);
-                    } else if(j == 3){
-                        activity.setCost(cellValue);
-                    } else if(j == 4){
-                        activity.setDescription(cellValue);
+                    switch (j){
+                        case 0:activity.setName(cellValue);
+                        case 1:activity.setStartDate(cellValue);
+                        case 2:activity.setEndDate(cellValue);
+                        case 3:activity.setCost(cellValue);
+                        case 4:activity.setDescription(cellValue);
                     }
                 }
                 //每一行中所有列都封装完成之后，把activity保存到list中
