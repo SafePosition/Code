@@ -31,5 +31,5 @@ public interface ActivityService {
     //查询所有市场活动
     List<Activity> queryAllActivitys();
     //根據上傳文件向表中插入數據
-//    int saveActivityByList(List<Activity> activityList);
+   int saveActivityByList(List<Activity> activityList);
 }

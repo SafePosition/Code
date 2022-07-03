@@ -17,19 +17,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.io.*;
+import java.util.*;
 
 /**
  * @BelongsProject: Code
@@ -163,6 +158,7 @@ public class ActivateController {
     public void exportAllActivitys  (HttpServletResponse response) throws Exception{
         List<Activity> activityList = activityService.queryAllActivitys();
         HSSFUtils.createExcelByActivityList(activityList,"activitylist.xls",response);
+
 //        //创建excl文件
 //        HSSFWorkbook wb = new HSSFWorkbook();
 //        HSSFSheet sheet = wb.createSheet("市场活动列表");
@@ -257,9 +253,111 @@ public class ActivateController {
 //        wb.close();
 //        out.flush();//out由tomcat关闭
     }
-//
+
 //    @RequestMapping("workbench/activity/importActivity.do")
-//    public Object importAvtivity(){
+//    @ResponseBody
+//    public Object importAvtivity(MultipartFile activityFile,HttpSession session){
+//        User user =(User) session.getAttribute(Contants.SESSION_USER);
+//        ReturnObject returnObject = new ReturnObject();
+//        try {
+//            //吧Excel文件写入到磁盘
+//            String originalFilename = activityFile.getOriginalFilename();
+//            File file = new File(".\\resource\\",originalFilename);
+//            activityFile.transferTo(file);
 //
+//            //解析文件中数据并封装成activityList
+//            FileInputStream is = new FileInputStream(".\\resource\\" + originalFilename);
+//            HSSFWorkbook wb = new HSSFWorkbook(is);
+//            HSSFSheet sheet = wb.getSheetAt(0);
+//            List<Activity> activityList = new ArrayList<>();
+//
+//            HSSFRow row = null;
+//            HSSFCell cell = null;
+//            Activity activity = null;
+//            for (int i = 0; i <= sheet.getLastRowNum() ; i++) {
+//                //先行遍历再列遍历
+//                row = sheet.getRow(i);
+//                activity = new Activity();
+//                activity.setId(UUIDUtils.getUUID());
+//                activity.setOwner(user.getId());
+//                activity.setCreateBy(DateUtils.formateDateTime(new Date()));
+//                activity.setCreateBy(user.getId());
+//                for (int j = 0; j <row.getLastCellNum() ; j++) {
+//                    cell = row.getCell(j);
+//                    String cellValue = HSSFUtils.getCellValueForStr(cell);
+//                    switch (j){
+//                        case 0:activity.setName(cellValue);
+//                        case 1:activity.setStartDate(cellValue);
+//                        case 2:activity.setEndDate(cellValue);
+//                        case 3:activity.setCost(cellValue);
+//                        case 4:activity.setDescription(cellValue);
+//                    }
+//                }
+//                activityList.add(activity);
+//            }
+//            int res = activityService.saveActivityByList(activityList);
+//            returnObject.setCode(Contants.RETURN_OBJECT_CODE_SUCCESS);
+//            returnObject.setRetData(res);
+//        }catch (Exception e){
+//            e.printStackTrace();
+//            returnObject.setCode(Contants.RETURN_OBJECT_CODE_FAIL);
+//            returnObject.setMessage("系统繁忙，请稍后重试...");
+//        }
+//        return returnObject;
 //    }
+
+    @RequestMapping("/workbench/activity/importActivity.do")
+    @ResponseBody
+    public Object importActivity(MultipartFile activityFile, HttpSession session){
+        User user = (User) session.getAttribute(Contants.SESSION_USER);
+        ReturnObject returnObject = new ReturnObject();
+        try {
+            InputStream is = activityFile.getInputStream();
+            HSSFWorkbook wb = new HSSFWorkbook(is);
+            // 根据wb获取HSSFSheet对象，封装了一页的所有信息
+            HSSFSheet sheet = wb.getSheetAt(0); // 页的下标，下标从0开始，依次增加
+            // 根据sheet获取HSSFRow对象，封装了一行的所有信息
+            HSSFRow row = null;
+            HSSFCell cell = null;
+            Activity activity = null;
+            List<Activity> activityList = new ArrayList<>();
+            for(int i = 1; i <= sheet.getLastRowNum(); i++) { // sheet.getLastRowNum()：最后一行的下标
+                row = sheet.getRow(i); // 行的下标，下标从0开始，依次增加
+                activity = new Activity();
+                // 补充部分参数
+                activity.setId(UUIDUtils.getUUID());
+                activity.setOwner(user.getId());
+                activity.setCreateTime(DateUtils.formateDateTime(new Date()));
+                activity.setCreateBy(user.getId());
+                for(int j = 0; j < row.getLastCellNum(); j++) { // row.getLastCellNum():最后一列的下标+1
+                    // 根据row获取HSSFCell对象，封装了一列的所有信息
+                    cell=row.getCell(j); // 列的下标，下标从0开始，依次增加
+                    // 获取列中的数据
+                    String cellValue = HSSFUtils.getCellValueForStr(cell);
+                    if(j == 0) {
+                        activity.setName(cellValue);
+                    } else if(j == 1){
+                        activity.setStartDate(cellValue);
+                    } else if(j == 2){
+                        activity.setEndDate(cellValue);
+                    } else if(j == 3){
+                        activity.setCost(cellValue);
+                    } else if(j == 4){
+                        activity.setDescription(cellValue);
+                    }
+                }
+                //每一行中所有列都封装完成之后，把activity保存到list中
+                activityList.add(activity);
+            }
+            // 调用service层方法，保存市场活动
+            int res = activityService.saveActivityByList(activityList);
+            returnObject.setCode(Contants.RETURN_OBJECT_CODE_SUCCESS);
+            returnObject.setRetData(res);
+        } catch (Exception e){
+            e.printStackTrace();
+            returnObject.setCode(Contants.RETURN_OBJECT_CODE_FAIL);
+            returnObject.setMessage("系统繁忙，请稍后重试...");
+        }
+        return returnObject;
+    }
 }

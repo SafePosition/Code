@@ -72,5 +72,5 @@ public interface ActivityMapper {
     List<Activity> selectAllActivitys();
 
     //根据前台的文件向表内插入数据
-   // int insertActivityByList(List<Activity> activityList);
+    int insertActivityByList(List<Activity> activityList);
 }
